@@ -12,17 +12,17 @@ let package = Package(
     products: [
         .library(
             name: "ErrorHandler",
-            targets: ["ErrorHandler"]),
-        .library(
-            name: "ErrorHandlerAlamofire",
             targets: ["ErrorHandler", "ErrorHandlerAlamofire"]),
+        .library(
+            name: "ErrorHandlerCore",
+            targets: ["ErrorHandler"]),
     ],
     dependencies: [
          .package(url: "https://github.com/Alamofire/Alamofire.git", .upToNextMajor(from: "5.0.0"))
     ],
     targets: [
         .target(name: "ErrorHandler", dependencies: [], path: "./ErrorHandler/CLasses/Core"),
-        .target(name: "ErrorHandlerAlamofire", dependencies: ["Alamofire"], path: "./ErrorHandler/Classes/Alamofire"),
+        .target(name: "ErrorHandlerAlamofire", dependencies: ["ErrorHandler", "Alamofire"], path: "./ErrorHandler/Classes/Alamofire"),
         .testTarget(name: "ErrorHandlerTests", dependencies: ["ErrorHandler", "ErrorHandlerAlamofire"], path: "./Example/Tests")
     ],
     swiftLanguageVersions: [.v4_2, .v5]

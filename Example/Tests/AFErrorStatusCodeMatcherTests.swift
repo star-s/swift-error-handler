@@ -10,6 +10,9 @@ import Foundation
 import XCTest
 import Alamofire
 import ErrorHandler
+#if SWIFT_PACKAGE
+    import ErrorHandlerAlamofire
+#endif
 
 class AFErrorStatusCodeMatcherTests: XCTestCase {
     
